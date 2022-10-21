@@ -1,0 +1,11 @@
+﻿body {
+    font-family: Verdana;
+    font-size: 1.2em;
+}
+
+
+label{
+    width: 120px;
+    display: inline-block;
+}
+
