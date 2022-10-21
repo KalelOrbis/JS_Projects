@@ -1,6 +1,4 @@
-﻿n
-
-var txtEntry = document.getElementById("txtEntry");
+﻿var txtEntry = document.getElementById("txtEntry");
 var txtMainCourse = document.getElementById("txtMainCourse");
 var txtDessert = document.getElementById("txtDessert");
 var ulOrdersList = document.getElementById("orderList");
@@ -33,7 +31,7 @@ function read()
     var menuList = JSON.parse(localStorage.getItem("orderArray"));
     for (var m of menuList)
     {
-       addJSONObjectsToList(m)
+       addJSONObjectsToList(m, menuList.indexOf(m))
     }
    
 }
@@ -62,11 +60,21 @@ function add()
     read();
 };
 
-function addJSONObjectsToList(item)
+function addJSONObjectsToList(item, itemIndex)
 {
     var listItems = document.createElement("li");
-    listItems.addEventListener("click", function () { listItems.remove() });
     var menuItems = item.split(";");
+   
+    listItems.addEventListener(
+        "click", 
+        function () 
+        {
+            listItems.remove();  
+            orderArray.splice(itemIndex,1);
+            localStorage.setItem("orderArray", JSON.stringify(orderArray));
+        }
+    );
+
     listItems.innerHTML = "<b>Entry:</b> " + menuItems[1] + " <b>Main Course:</b> " + menuItems[2] + " <b>Dessert:</b>" + menuItems[3];
     ulOrdersList.appendChild(listItems);
 };

@@ -3,6 +3,10 @@
     font-size: 1.2em;
 }
 
+.navbar
+{
+    background-color: #e6e6e6;
+}
 
 label{
     width: 120px;
